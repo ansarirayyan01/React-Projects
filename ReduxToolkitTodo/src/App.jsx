@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      <h1 className='text-3xl text-red-500'>Learn about Redux Toolkit</h1>
+      <h1 className='text-3xl text-white'>Learn about Redux Toolkit</h1>
       <AddTodo />
       <Todos />
     </>
