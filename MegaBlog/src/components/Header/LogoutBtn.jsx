@@ -12,7 +12,9 @@ function LogoutBtn() {
    })
   }
   return (
-    <button className=''>Logout</button>
+    <button className=''
+    onClick={logoutHandler}
+    >Logout</button>
   )
 }
 
