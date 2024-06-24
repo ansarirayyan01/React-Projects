@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 function SignUp() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [register, handleSubmit] = useForm();
+  const {register, handleSubmit} = useForm();
   const [error, setError] = useState("");
 
   const create = async (data) => {
