@@ -26,11 +26,12 @@ export class Service {
                     content,
                     featuredImage,
                     status,
-                    userId,
+                    userId
                 }
             )
         } catch (error) {
             console.log("Appwrite service :: CreatePost :: error", error);
+            throw error;
         }
     }
 
@@ -49,6 +50,7 @@ export class Service {
             )
         } catch (error) {
             console.log("Appwrite service :: UpdatePost :: error", error);
+            throw error;
         }
     }
 
@@ -75,6 +77,7 @@ export class Service {
             )
         } catch (error) {
             console.log("Appwrite service :: GetPost :: error", error);
+            return null;
         }
     }
 
@@ -87,7 +90,7 @@ export class Service {
             )
         } catch (error) {
             console.log("Appwrite service :: GetPosts :: error", error);
-            return false
+            return null;
         }
     }
 
@@ -103,6 +106,7 @@ export class Service {
             )
         } catch (error) {
             console.log("Appwrite service :: UploadFile :: error", error);
+            throw error;
         }
     }
 
@@ -127,7 +131,7 @@ export class Service {
             )
         } catch (error) {
             console.log("Appwrite service :: GetFile :: error", error);
-            return false
+            return null;
         }
     }
 
@@ -138,18 +142,25 @@ export class Service {
             )
         } catch (error) {
             console.log("Appwrite service :: GetFiles :: error", error);
+            return null;
         }
     }
 
-    getFilePreview(fileId) {
+    getFileView(fileId) {
         try {
-            return this.bucket.getFilePreview(
+            if (!fileId) {
+                console.log("Appwrite service :: GetFileView :: error: No fileId provided");
+                return null;
+            }
+            
+            console.log("Getting file view for ID:", fileId);
+            return this.bucket.getFileView(
                 conf.appwriteBucketId,
                 fileId
-            )
+            );
         } catch (error) {
-            console.log("Appwrite service :: GetFilePreview :: error", error);
-            return false
+            console.log("Appwrite service :: GetFileView :: error", error);
+            return null;
         }
     }
 
